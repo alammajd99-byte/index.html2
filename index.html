@@ -218,7 +218,36 @@
             filterCards();
         });
     });
-});
+});<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن أداة ذكاء اصطناعي...">
+    
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="coding">برمجة</button>
+        <button class="filter-btn" data-filter="design">تصميم وصور</button>
+        <button class="filter-btn" data-filter="text">نصوص ومحادثة</button>
+    </div>
+</div>
+
+<div class="cards-container">
+    <div class="card" data-category="coding">
+        <h3>GitHub Copilot</h3>
+        <p>مساعد برمي ذكي للمطورين...</p>
+        <button>Visit Copilot</button>
+    </div>
+
+    <div class="card" data-category="design">
+        <h3>Midjourney</h3>
+        <p>توليد الصور الاحترافية من النصوص...</p>
+        <button>Visit Midjourney</button>
+    </div>
+
+    <div class="card" data-category="text">
+        <h3>ChatGPT</h3>
+        <p>ثورة في توليد النصوص والإجابة على الأسئلة...</p>
+        <button>Visit ChatGPT</button>
+    </div>
+</div>
     </style>
 </head>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
