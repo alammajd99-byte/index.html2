@@ -173,7 +173,52 @@
 /* تلوين الاسم نفسه بلون مختلف للفت الانتباه */
 .creator-name span {
     color: #00d2ff;
-}
+}document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    // وظيفة الفلترة المشتركة (البحث والتصنيف معاً)
+    function filterCards() {
+        const searchText = searchInput.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+        cards.forEach(card => {
+            const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+            const cardDescription = card.querySelector('p').textContent.toLowerCase();
+            const cardCategory = card.getAttribute('data-category');
+
+            // التحقق هل النص المكتوب موجود في العنوان أو الوصف؟
+            const matchesSearch = cardTitle.includes(searchText) || cardDescription.includes(searchText);
+            // التحقق هل تصنيف البطاقة يطابق الزر النشط؟
+            const matchesFilter = activeFilter === 'all' || cardCategory === activeFilter;
+
+            // إذا تطابق الشرطان تظهر البطاقة، وإلا تختفي بالتدريج
+            if (matchesSearch && matchesFilter) {
+                card.style.display = "block";
+                setTimeout(() => card.style.opacity = "1", 10);
+            } else {
+                card.style.opacity = "0";
+                card.style.display = "none";
+            }
+        });
+    }
+
+    // تشغيل الفلترة عند الكتابة في خانة البحث
+    searchInput.addEventListener('input', filterCards);
+
+    // تشغيل الفلترة عند الضغط على أزرار التصنيفات
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // تغيير الزر النشط
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // تنفيذ الفلترة
+            filterCards();
+        });
+    });
+});
     </style>
 </head>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
