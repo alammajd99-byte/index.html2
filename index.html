@@ -1,338 +1,227 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم الذكاء الاصطناعي وتطبيقاته</title>
-    <style> 
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            scroll-behavior: smooth; 
-            background-color: #154cd6; /* خلفية داكنة للموقع بالكامل مستوحاة من التقنية */
-            color: #f3f3f3;
-        } 
-
-        /* قسم الواجهة الرئيسية */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.9)), 
-                        url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
+    <title>World of AI</title>
+    <style>
+        /* التنسيقات العامة للموقع */
+        body {
+            background-color: #0f172a; /* لون الخلفية الداكن */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            padding: 50px 20px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
             color: #00d2ff;
+            font-size: 36px;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
         }
 
-        /* الأزرار العامة */
-        .btn {
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #007bff, #00d2ff);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s transform, 0.3s box-shadow;
-            display: inline-block;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
-            cursor: pointer;
-        }
-        .btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.6);
-        }
-
-        /* قسم المعلومات العامة وأهمية الذكاء الاصطناعي */
-        .info-section {
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #0b0f19, #1a233a); /* خلفية ملوّنة داكنة وعميقة */
-            line-height: 1.8;
+        /* تنسيقات شريط البحث والأزرار */
+        .search-container {
             text-align: center;
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 0 20px;
         }
-        .info-section h2 { 
-            color: #00d2ff; 
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #00d2ff;
+            border-radius: 25px;
+            background-color: #1e293b;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
         }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
+
+        #searchInput:focus {
+            box-shadow: 0 0 15px #00d2ff;
         }
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: right;
+
+        .filter-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #00d2ff;
+            color: #00d2ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
             transition: 0.3s;
         }
-        .benefit-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #00d2ff;
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #00d2ff;
+            color: #0f172a;
+            font-weight: bold;
         }
-        .benefit-card h3 {
+
+        /* تنسيقات البطاقات */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 20px;
+            width: 280px;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.4s ease, transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
             color: #00d2ff;
             margin-top: 0;
         }
 
-        /* قسم التطبيقات وروابطها */
-        .apps-section {
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #1a233a, #0b0f19); /* تدرج لوني آخر لكسر الرتابة */
-            text-align: center;
-        }
-        .apps-section h2 {
-            color: #00d2ff;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .apps-section .subtitle {
-            color: #a0aec0;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-        }
-        .apps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .app-box {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: transform 0.3s, border-color 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: right;
-        }
-        .app-box:hover {
-            transform: translateY(-10px);
-            border-color: #00d2ff;
-        }
-        .app-box h3 {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .app-box p {
+        .card p {
             color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 1.5;
         }
-        .app-box .app-btn {
-            align-self: center;
+
+        .visit-btn {
+            display: inline-block;
+            background-color: #00d2ff;
+            color: #0f172a;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
             width: 100%;
             text-align: center;
-            padding: 12px 0;
-            font-size: 0.95rem;
-        }/* تنسيق صندوق الاسم في الزاوية */
-.creator-name {
-    position: absolute;
-    top: 20px;
-    left: 30px; /* لجعله في الزاوية اليسرى */
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    z-index: 1000; /* لضمان ظهوره فوق كل العناصر الأخرى */
-    background: rgba(255, 255, 255, 0.1); /* خلفية زجاجية شفافة */
-    padding: 10px 20px;
-    border-radius: 12px;
-    backdrop-filter: blur(5px); /* تأثير ضبابي جميل للخلفية */
-    border: 1px solid rgba(0, 212, 255, 0.3);
-}
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
 
-/* تلوين الاسم نفسه بلون مختلف للفت الانتباه */
-.creator-name span {
-    color: #00d2ff;
-}document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.card');
-
-    // وظيفة الفلترة المشتركة (البحث والتصنيف معاً)
-    function filterCards() {
-        const searchText = searchInput.value.toLowerCase();
-        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-
-        cards.forEach(card => {
-            const cardTitle = card.querySelector('h3').textContent.toLowerCase();
-            const cardDescription = card.querySelector('p').textContent.toLowerCase();
-            const cardCategory = card.getAttribute('data-category');
-
-            // التحقق هل النص المكتوب موجود في العنوان أو الوصف؟
-            const matchesSearch = cardTitle.includes(searchText) || cardDescription.includes(searchText);
-            // التحقق هل تصنيف البطاقة يطابق الزر النشط؟
-            const matchesFilter = activeFilter === 'all' || cardCategory === activeFilter;
-
-            // إذا تطابق الشرطان تظهر البطاقة، وإلا تختفي بالتدريج
-            if (matchesSearch && matchesFilter) {
-                card.style.display = "block";
-                setTimeout(() => card.style.opacity = "1", 10);
-            } else {
-                card.style.opacity = "0";
-                card.style.display = "none";
-            }
-        });
-    }
-
-    // تشغيل الفلترة عند الكتابة في خانة البحث
-    searchInput.addEventListener('input', filterCards);
-
-    // تشغيل الفلترة عند الضغط على أزرار التصنيفات
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // تغيير الزر النشط
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // تنفيذ الفلترة
-            filterCards();
-        });
-    });
-});<div class="search-container">
-    <input type="text" id="searchInput" placeholder="ابحث عن أداة ذكاء اصطناعي...">
-    
-    <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">الكل</button>
-        <button class="filter-btn" data-filter="coding">برمجة</button>
-        <button class="filter-btn" data-filter="design">تصميم وصور</button>
-        <button class="filter-btn" data-filter="text">نصوص ومحادثة</button>
-    </div>
-</div>
-
-<div class="cards-container">
-    <div class="card" data-category="coding">
-        <h3>GitHub Copilot</h3>
-        <p>مساعد برمي ذكي للمطورين...</p>
-        <button>Visit Copilot</button>
-    </div>
-
-    <div class="card" data-category="design">
-        <h3>Midjourney</h3>
-        <p>توليد الصور الاحترافية من النصوص...</p>
-        <button>Visit Midjourney</button>
-    </div>
-
-    <div class="card" data-category="text">
-        <h3>ChatGPT</h3>
-        <p>ثورة في توليد النصوص والإجابة على الأسئلة...</p>
-        <button>Visit ChatGPT</button>
-    </div>
-</div>
+        .visit-btn:hover {
+            background-color: #00b8e6;
+        }
     </style>
 </head>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<body><div class="creator-name">
-    من قِبل: <span>majd alam</span>
-</div>
+<body>
 
-    <!-- قسم الواجهة الرئيسية (Hero) -->
     <div class="hero">
-        <div class="content">
-            <img src="Designer.png" alt="شعار عالم الذكاء الاصطناعي" width="150">
-            <h1>مستقبل الذكاء الاصطناعي</h1>
-            <p>اكتشف كيف يغير الذكاء الاصطناعي العالم من حولنا وتعرّف على أبرز أدواته</p>
-            <a href="#about" class="btn">ابدأ التجربة</a>
+        <h2>WORLD OF AI</h2>
+        <h1>The Future of Artificial Intelligence</h1>
+        <p>Discover how AI is changing the world around us and learn about its most prominent tools</p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for tools...">
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="coding">Coding</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="text">Chat</button>
         </div>
     </div>
 
-    <!-- قسم أهمية الذكاء الاصطناعي -->
-    <div id="about" class="info-section">
-        <h2>لماذا الذكاء الاصطناعي مهم؟</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <h3>1. تعزيز الإنتاجية</h3>
-                <p>يساعد في أتمتة المهام الروتينية وتوفير الوقت والجهد البشري للتركيز على الإبداع.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>2. اتخاذ القرارات</h3>
-                <p>تحليل كميات ضخمة من البيانات في ثوانٍ معدودة لاتخاذ قرارات دقيقة ومبنية على حقائق.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>3. الطب والعلوم</h3>
-                <p>تسريع اكتشاف الأدوية الجديدة وتطوير الرعاية الصحية وتشخيص الأمراض بدقة عالية.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>4. الابتكار المستمر</h3>
-                <p>فتح آفاق جديدة بالكامل في مجالات مثل السيارات ذاتية القيادة والترجمة الفورية الفائقة.</p>
-            </div>
+    <div class="cards-container">
+        
+        <div class="card" data-category="coding">
+            <h3>GitHub Copilot</h3>
+            <p><strong>Important:</strong> The most powerful software assistant for developers, as it suggests writing full code and fixing bugs, increasing programmer productivity by more than 50%.</p>
+            <a href="https://github.com/features/copilot" target="_blank" class="visit-btn">Visit Copilot</a>
         </div>
+
+        <div class="card" data-category="design">
+            <h3>Midjourney</h3>
+            <p><strong>Important:</strong> A leader in transforming descriptive words and text into professional, high-resolution artwork and images, shortening weeks of design in seconds.</p>
+            <a href="https://www.midjourney.com/" target="_blank" class="visit-btn">Visit Midjourney</a>
+        </div>
+
+        <div class="card" data-category="text">
+            <h3>ChatGPT</h3>
+            <p><strong>Important:</strong> It is a revolution in text generation, answering questions, writing articles, and helping with programming, summarizing information very intelligently and quickly.</p>
+            <a href="https://chat.openai.com/" target="_blank" class="visit-btn">Visit ChatGPT</a>
+        </div>
+
+        <div class="card" data-category="text">
+            <h3>DeepL</h3>
+            <p><strong>Important:</strong> Provides the world's best and most accurate translation of texts based on neural networks, outperforming traditional translators.</p>
+            <a href="https://www.deepl.com/" target="_blank" class="visit-btn">Visit DeepL</a>
+        </div>
+
     </div>
 
-    <!-- قسم تطبيقات الذكاء الاصطناعي وروابطها -->
-    <div class="apps-section">
-        <h2>أبرز تطبيقات الذكاء الاصطناعي</h2>
-        <p class="subtitle">اضغط على أي تطبيق لزيارة موقعه الرسمي وتجربته بنفسك</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.card');
 
-        <div class="apps-container">
-            
-            <!-- تطبيق 1: ChatGPT -->
-            <div class="app-box">
-                <div>
-                    <h3>🤖 ChatGPT</h3>
-                    <p><strong>الأهمية:</strong> يُعد ثورة في توليد النصوص، الإجابة على الأسئلة، كتابة المقالات، والمساعدة في البرمجة وتلخيص المعلومات بشكل ذكي وسريع جداً.</p>
-                </div>
-                <a href="https://chatgpt.com/" target="_blank" class="btn app-btn">🚀 زيارة ChatGPT</a>
-            </div>
+            function filterCards() {
+                const searchText = searchInput.value.toLowerCase();
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
 
-            <!-- تطبيق 2: Midjourney -->
-            <div class="app-box">
-                <div>
-                    <h3>🎨 Midjourney</h3>
-                    <p><strong>الأهمية:</strong> رائد في تحويل الكلمات والنصوص الوصفية إلى لوحات فنية وصور احترافية عالية الدقة، مما يختصر أسابيع من التصميم في ثوانٍ.</p>
-                </div>
-                <a href="https://www.midjourney.com/" target="_blank" class="btn app-btn">🎨 زيارة Midjourney</a>
-            </div>
+                cards.forEach(card => {
+                    const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                    const cardDescription = card.querySelector('p').textContent.toLowerCase();
+                    const cardCategory = card.getAttribute('data-category');
 
-            <!-- تطبيق 3: GitHub Copilot -->
-            <div class="app-box">
-                <div>
-                    <h3>💻 GitHub Copilot</h3>
-                    <p><strong>الأهمية:</strong> المساعد البرمجي الأقوى للمطورين، حيث يقترح كتابة أكواد كاملة، ويصلح الأخطاء، مما يرفع إنتاجية المبرمجين بنسبة تتجاوز 50%.</p>
-                </div>
-                <a href="https://github.com/features/copilot" target="_blank" class="btn app-btn">🛠️ زيارة Copilot</a>
-            </div>
+                    const matchesSearch = cardTitle.includes(searchText) || cardDescription.includes(searchText);
+                    const matchesFilter = activeFilter === 'all' || cardCategory === activeFilter;
 
-            <!-- تطبيق 4: DeepL -->
-            <div class="app-box">
-                <div>
-                    <h3>🌐 DeepL</h3>
-                    <p><strong>الأهمية:</strong> يقدم أفضل وأدق ترجمة نصوص في العالم بناءً على الشبكات العصبية، متفوقاً على الترجمات التقليدية بفهم السياق والمعاني الثقافية.</p>
-                </div>
-                <a href="https://www.deepl.com/" target="_blank" class="btn app-btn">🌍 زيارة DeepL</a>
-            </div>
+                    if (matchesSearch && matchesFilter) {
+                        card.style.display = "block";
+                        setTimeout(() => card.style.opacity = "1", 10);
+                    } else {
+                        card.style.opacity = "0";
+                        setTimeout(() => card.style.display = "none", 300); // وقت متناسق مع الـ CSS
+                    }
+                });
+            }
 
-        </div>
-    </div>
+            searchInput.addEventListener('input', filterCards);
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    filterCards();
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
