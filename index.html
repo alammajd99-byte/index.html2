@@ -151,7 +151,19 @@
             <!-- قسم الواجهة الرئيسية -->
 <section class="hero-section">
   <img src="images/hero-slide.png" alt="مشروع ربط ChatGPT مع GitHub" class="responsive-img">
-</section>
+</section>.hero-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* يعطي حواف دائرية ناعمة وجميلة للصورة */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* ظل خفيف لإبراز التصميم */
+}
         }
 
         /* لمسة إضافية لجعل البطاقات تظهر أجمل فوق الخلفية الجديدة (اجعلها شفافة قليلاً) */
