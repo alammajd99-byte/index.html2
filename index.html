@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>World of AI</title>
+    
     <style>
-        /* التنسيقات العامة للموقع */
-        body{
-    site-cover{
-  /* تم تعديل المسار ليقرأ ملف الصورة الخاصة بك مباشرة */
-  background-image: url('./design.png')!important;
-  
-  /* الخصائص الأساسية لضبط أبعاد ومظهر الصورة */
-  background-size: cover!important;       
-  background-position: center!important;  
-  background-repeat: no-repeat!important; 
-  
-  /* أبعاد الغلاف */
-  width: 100%!important;
-  height: 400px!important; /* يمكنك تعديل الارتفاع حسب رغبتك */
+        /* هذا الكود يلغي الفراغات البيضاء من حواف الصفحة ليلتصق الغلاف بالسقف */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .site-cover {
+            background-image: url('./design.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            /* قللنا الارتفاع هنا ليصبح شريطاً علوياً بدل أن يملأ الشاشة */
+            height: 250px; 
+        }
+    </style>
+</head>
+
+<body>
+    <!-- الغلاف: تأكد أنه أول سطر بعد فتح الـ body مباشرة -->
+    <div class="site-cover"></div>
+
+    <!-- هنا يبدأ باقي محتوى موقعك الفعلي تحت الغلاف -->
+    <div style="padding: 20px;">
+        <h2>محتوى الموقع الخاص بك</h2>
+        <p>الآن الغلاف أصبح في الأعلى، وباقي الكلام والصور ستظهر تحته هنا بشكل مرتب.</p>
+    </div>
+
+</body>
+</html> /* يمكنك تعديل الارتفاع حسب رغبتك */
   
   /* لتنسيق أي نصوص تضعها فوق الغلاف */
   display: flex;
