@@ -7,6 +7,27 @@
     <style>
         /* التنسيقات العامة للموقع */
         body{
+            .site-cover {
+  /* تم تعديل المسار ليقرأ ملف الصورة الخاصة بك مباشرة */
+  background-image: url('Design.png');
+  
+  /* الخصائص الأساسية لضبط أبعاد ومظهر الصورة */
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+  
+  /* أبعاد الغلاف */
+  width: 100%;
+  height: 400px; /* يمكنك تعديل الارتفاع حسب رغبتك */
+  
+  /* لتنسيق أي نصوص تضعها فوق الغلاف */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff; 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+}
+
             background-color: #0f172a; /* لون الخلفية الداكن */
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -182,9 +203,6 @@
 </head>
 <body> 
     <body>
-    
-
-
     <!-- قسم الواجهة الرئيسية (السلايد) -->
    <div style="position: relative; width: 100%; height: 0; padding-top: 393.5578%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
