@@ -1,327 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World of AI</title>
-</head>
-    <body>
+    
     <style>
-        /* هذا الكود يلغي الفراغات البيضاء من حواف الصفحة ليلتصق الغلاف بالسقف */
+        /* ========================================= */
+        /* 1. الإعدادات الأساسية للصفحة */
+        /* ========================================= */
         body {
+            background-color: #0f172a; 
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
         }
 
+        /* ========================================= */
+        /* 2. تصميم الغلاف العلوي */
+        /* ========================================= */
         .site-cover {
             background-image: url('./design.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             width: 100%;
-            /* قللنا الارتفاع هنا ليصبح شريطاً علوياً بدل أن يملأ الشاشة */
-            height: 250px; 
+            height: 250px;
         }
+
+        /* ========================================= */
+        /* 3. تصميم السلايدات (الشرائح) */
+        /* ========================================= */
+        .slider-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #00d2ff;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
+        }
+        .slides-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+        .slides-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .slide {
+            min-width: 100%;
+            scroll-snap-align: center;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        .slide-text {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border-right: 3px solid #00d2ff;
+        }
+
+        /* ========================================= */
+        /* 4. تصميمات موقعك الأصلية */
+        /* ========================================= */
+        .hero { padding: 20px 20px; text-align: center; }
+        .hero h1 { color: #00d2ff; font-size: 36px; margin-bottom: 10px;}
+        .hero p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .search-container { text-align: center; margin: 30px auto; max-width: 600px; padding: 0 20px; }
+        #searchInput { width: 80%; padding: 10px 15px; border: 2px solid #00d2ff; border-radius: 25px; background-color: #1e293b; color: #fff; outline: none; transition: 0.3s; box-sizing: border-box; }
+        #searchInput:focus { box-shadow: 0 0 15px #00d2ff; }
+        
+        .filter-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: #00d2ff; color: #0f172a; font-weight: bold; }
+        
+        .cards-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 40px 20px; }
+        .card { background-color: #1e293b; border-radius: 15px; padding: 20px; width: 280px; text-align: right; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.3s ease; border: 1px solid rgba(0, 210, 255, 0.2); }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #00d2ff; margin-top: 0; }
+        .card p { color: #cbd5e1; font-size: 14px; line-height: 1.5; }
+        
+        .visit-btn { display: inline-block; background-color: #00d2ff; color: #0f172a; text-decoration: none; padding: 10px 15px; border-radius: 8px; margin-top: 15px; font-weight: bold; text-align: center; transition: 0.3s; }
+        .visit-btn:hover { background-color: #00b8e6; }
     </style>
 </head>
-
 <body>
-    <!-- الغلاف: تأكد أنه أول سطر بعد فتح الـ body مباشرة -->
+
     <div class="site-cover"></div>
 
-    <!-- هنا يبدأ باقي محتوى موقعك الفعلي تحت الغلاف -->
-    <div style="padding: 20px;">
-        <h2>محتوى الموقع الخاص بك</h2>
-        <p>الآن الغلاف أصبح في الأعلى، وباقي الكلام والصور ستظهر تحته هنا بشكل مرتب.</p>
+    <div class="hero">
+        <h1>مرحباً بك في World of AI</h1>
+        <p>اكتشف أحدث الأدوات والخدمات في عالم الذكاء الاصطناعي</p>
     </div>
 
-</body>
-        <html>
-            <style>
- /* يمكنك تعديل الارتفاع حسب رغبتك */
-  
-  /* لتنسيق أي نصوص تضعها فوق الغلاف */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff; 
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-}
-
-            background-color: #0f172a; /* لون الخلفية الداكن */
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .hero {
-            padding: 50px 20px;
-        }
-
-        .hero h1 {
-            color: #00d2ff;
-            font-size: 36px;
-        }
-
-        .hero p {
-            color: #94a3b8;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 20px auto;
-        }
-
-        /* تنسيقات شريط البحث والأزرار */
-        .search-container {
-            text-align: center;
-            margin: 30px auto;
-            max-width: 600px;
-            padding: 0 20px;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: 2px solid #00d2ff;
-            border-radius: 25px;
-            background-color: #1e293b;
-            color: #fff;
-            outline: none;
-            transition: 0.3s;
-            box-sizing: border-box;
-        }
-
-        #searchInput:focus {
-            box-shadow: 0 0 15px #00d2ff;
-        }
-
-        .filter-buttons {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid #00d2ff;
-            color: #00d2ff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: #00d2ff;
-            color: #0f172a;
-            font-weight: bold;
-        }
-
-        /* تنسيقات البطاقات */
-        .cards-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background-color: #1e293b;
-            border-radius: 15px;
-            padding: 20px;
-            width: 280px;
-            text-align: left;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: opacity 0.4s ease, transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: #00d2ff;
-            margin-top: 0;
-        }
-
-        .card p {
-            color: #cbd5e1;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .visit-btn {
-            display: inline-block;
-            background-color: #00d2ff;
-            color: #0f172a;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-weight: bold;
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
-            transition: 0.3s;
-        }
-
-        .visit-btn:hover {
-            background-color: #00b8e6;
-        }/* التنسيقات العامة للموقع بعد إضافة الخلفية */
-        body {
-            /* ⬇️ هذا هو السطر الجديد الذي يجب استبداله ⬇️ */
-            background-image: url('');/* اسم الصورة التي رفعتها */
-            background-size: cover; /* تجعل الصورة تملأ الشاشة بالكامل */
-            background-position: center; /* تمركز الصورة */
-            background-attachment: fixed; /* تثبيت الخلفية عند النزول للأسفل لتأثير جميل */
-            background-repeat: no-repeat;
-            
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            
-
-
-.responsive-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px; /* يعطي حواف دائرية ناعمة وجميلة للصورة */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* ظل خفيف لإبراز التصميم */
-}
-
-.responsive-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px; /* يعطي حواف دائرية ناعمة وجميلة للصورة */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* ظل خفيف لإبراز التصميم */
-}
-        }
-
-        /* لمسة إضافية لجعل البطاقات تظهر أجمل فوق الخلفية الجديدة (اجعلها شفافة قليلاً) */
-        .card {
-            background-color: rgba(30, 41, 59, 0.85); /* خلفية البطاقة شبه شفافة */
-            backdrop-filter: blur(5px); /* تأثير ضبابي ناعم للخلفية خلف البطاقة */
-            border: 1px solid rgba(0, 210, 255, 0.2); /* إطار أزرق نحيف جداً */
-            
-            border-radius: 15px;
-            padding: 20px;
-            width: 280px;
-            text-align: left;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: opacity 0.4s ease, transform 0.3s ease;
-        }
-    </style>
-</head>
-<body> 
-    <body>
-    <div class="site-cover"></div><!-- قسم الواجهة الرئيسية (السلايد) -->
-   <div style="position: relative; width: 100%; height: 0; padding-top: 393.5578%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAHLapdC4tk/Q33SSlbqsBIefj6LjcstoA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAHLapdC4tk&#x2F;Q33SSlbqsBIefj6LjcstoA&#x2F;view?utm_content=DAHLapdC4tk&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">alammajd99@gmail.com</a> by Majd Alam
-
-    <!-- باقي محتوى موقعك والأدوات يمكنك إضافتها هنا لاحقاً -->
-
-</body>
-
-
-    <div class="hero">
-        <h2>WORLD OF AI</h2>
-        <h1>The Future of Artificial Intelligence</h1>
-        <p>Discover how AI is changing the world around us and learn about its most prominent tools</p>
+    <div class="slider-container">
+        <div class="slides-wrapper">
+            <div class="slide">
+                <img src="./hero-slide.png" alt="سلايد 1">
+                <div class="slide-text">نص تجريبي للشريحة الأولى</div>
+            </div>
+            <div class="slide">
+                <img src="./hero-slide.png" alt="سلايد 2">
+                <div class="slide-text">نص تجريبي للشريحة الثانية</div>
+            </div>
+            <div class="slide">
+                <img src="./hero-slide.png" alt="سلايد 3">
+                <div class="slide-text">نص تجريبي للشريحة الثالثة</div>
+            </div>
+        </div>
     </div>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search for tools...">
-        
+        <input type="text" id="searchInput" placeholder="ابحث هنا...">
         <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="coding">Coding</button>
-            <button class="filter-btn" data-filter="design">Design</button>
-            <button class="filter-btn" data-filter="text">Chat</button>
+            <button class="filter-btn active">الكل</button>
+            <button class="filter-btn">تصنيف 1</button>
+            <button class="filter-btn">تصنيف 2</button>
         </div>
     </div>
 
     <div class="cards-container">
+        <div class="card">
+            <h3>عنوان الأداة أو الخدمة</h3>
+            <p>هنا يمكنك كتابة وصف مختصر للخدمة التي تقدمها.</p>
+            <a href="#" class="visit-btn">زيارة الرابط</a>
+        </div>
         
-        <div class="card" data-category="coding">
-            <h3>GitHub Copilot</h3>
-            <p><strong>Important:</strong> The most powerful software assistant for developers, as it suggests writing full code and fixing bugs, increasing programmer productivity by more than 50%.</p>
-            <a href="https://github.com/features/copilot" target="_blank" class="visit-btn">Visit Copilot</a>
+        <div class="card">
+            <h3>خدمة أخرى</h3>
+            <p>وصف آخر يعرض محتواك بشكل أنيق ومرتب.</p>
+            <a href="#" class="visit-btn">زيارة الرابط</a>
         </div>
-
-        <div class="card" data-category="design">
-            <h3>Midjourney</h3>
-            <p><strong>Important:</strong> A leader in transforming descriptive words and text into professional, high-resolution artwork and images, shortening weeks of design in seconds.</p>
-            <a href="https://www.midjourney.com/" target="_blank" class="visit-btn">Visit Midjourney</a>
-        </div>
-
-        <div class="card" data-category="text">
-            <h3>ChatGPT</h3>
-            <p><strong>Important:</strong> It is a revolution in text generation, answering questions, writing articles, and helping with programming, summarizing information very intelligently and quickly.</p>
-            <a href="https://chat.openai.com/" target="_blank" class="visit-btn">Visit ChatGPT</a>
-        </div>
-
-        <div class="card" data-category="text">
-            <h3>DeepL</h3>
-            <p><strong>Important:</strong> Provides the world's best and most accurate translation of texts based on neural networks, outperforming traditional translators.</p>
-            <a href="https://www.deepl.com/" target="_blank" class="visit-btn">Visit DeepL</a>
-        </div>
-
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const searchInput = document.getElementById('searchInput');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const cards = document.querySelectorAll('.card');
-
-            function filterCards() {
-                const searchText = searchInput.value.toLowerCase();
-                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-
-                cards.forEach(card => {
-                    const cardTitle = card.querySelector('h3').textContent.toLowerCase();
-                    const cardDescription = card.querySelector('p').textContent.toLowerCase();
-                    const cardCategory = card.getAttribute('data-category');
-
-                    const matchesSearch = cardTitle.includes(searchText) || cardDescription.includes(searchText);
-                    const matchesFilter = activeFilter === 'all' || cardCategory === activeFilter;
-
-                    if (matchesSearch && matchesFilter) {
-                        card.style.display = "block";
-                        setTimeout(() => card.style.opacity = "1", 10);
-                    } else {
-                        card.style.opacity = "0";
-                        setTimeout(() => card.style.display = "none", 300); // وقت متناسق مع الـ CSS
-                    }
-                });
-            }
-
-            searchInput.addEventListener('input', filterCards);
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    filterCards();
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>
