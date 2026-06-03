@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World of AI</title>
+    <title>The Future of Artificial Intelligence</title>
     
     <style>
         /* ========================================= */
-        /* 1. الإعدادات الأساسية للصفحة */
+        /* 1. الإعدادات الأساسية والخلفية الزرقاء */
         /* ========================================= */
         body {
-            background-color: #0f172a; 
+            background-color: #0f172a; /* لون أزرق داكن لكل الموقع - لا يوجد أبيض */
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -30,16 +30,24 @@
         }
 
         /* ========================================= */
-        /* 3. تصميم السلايدات (الشرائح) */
+        /* 3. تصميم الترحيب (النصوص) */
+        /* ========================================= */
+        .hero { padding: 40px 20px 20px; text-align: center; }
+        .hero h1 { color: #00d2ff; font-size: 32px; margin-bottom: 10px; }
+        .hero p { color: #94a3b8; font-size: 16px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        /* ========================================= */
+        /* 4. تصميم السلايدات (تم إصلاح الشريط الأبيض) */
         /* ========================================= */
         .slider-container {
             width: 90%;
             max-width: 800px;
-            margin: 40px auto;
+            margin: 30px auto;
             border-radius: 15px;
             overflow: hidden;
             border: 2px solid #00d2ff;
             box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
+            background-color: #0f172a; /* خلفية زرقاء داكنة لمنع ظهور أي لون أبيض */
         }
         .slides-wrapper {
             display: flex;
@@ -49,52 +57,44 @@
             -ms-overflow-style: none;  
             scrollbar-width: none;  
         }
-        .slides-wrapper::-webkit-scrollbar {
-            display: none;
-        }
+        .slides-wrapper::-webkit-scrollbar { display: none; }
         .slide {
             min-width: 100%;
             scroll-snap-align: center;
             position: relative;
+            background-color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .slide img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-        .slide-text {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(15, 23, 42, 0.8);
-            padding: 10px 20px;
-            border-radius: 8px;
-            border-right: 3px solid #00d2ff;
+            height: 250px;
+            object-fit: contain; /* هذا سيمنع قص الصورة أو تشوهها وسيمنع الخطوط البيضاء */
         }
 
         /* ========================================= */
-        /* 4. تصميمات موقعك الأصلية */
+        /* 5. شريط البحث والفلاتر */
         /* ========================================= */
-        .hero { padding: 20px 20px; text-align: center; }
-        .hero h1 { color: #00d2ff; font-size: 36px; margin-bottom: 10px;}
-        .hero p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
-        
         .search-container { text-align: center; margin: 30px auto; max-width: 600px; padding: 0 20px; }
-        #searchInput { width: 80%; padding: 10px 15px; border: 2px solid #00d2ff; border-radius: 25px; background-color: #1e293b; color: #fff; outline: none; transition: 0.3s; box-sizing: border-box; }
-        #searchInput:focus { box-shadow: 0 0 15px #00d2ff; }
+        #searchInput { width: 100%; padding: 12px 20px; border: 2px solid #1e293b; border-radius: 25px; background-color: #1e293b; color: #fff; outline: none; transition: 0.3s; box-sizing: border-box; font-size: 16px; }
+        #searchInput:focus { border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
         
-        .filter-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .filter-btn { background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .filter-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-size: 14px; }
         .filter-btn:hover, .filter-btn.active { background: #00d2ff; color: #0f172a; font-weight: bold; }
+
+        /* ========================================= */
+        /* 6. تصميم البطاقات الزرقاء الداكنة */
+        /* ========================================= */
+        .cards-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; padding: 40px 20px; }
+        .card { background-color: #1e293b; border-radius: 15px; padding: 25px; width: 300px; text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s ease; border: 1px solid rgba(0, 210, 255, 0.1); display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); border-color: rgba(0, 210, 255, 0.5); }
+        .card h3 { color: #00d2ff; margin-top: 0; font-size: 22px; margin-bottom: 15px; }
+        .card p { color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .card p strong { color: #fff; }
         
-        .cards-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 40px 20px; }
-        .card { background-color: #1e293b; border-radius: 15px; padding: 20px; width: 280px; text-align: right; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.3s ease; border: 1px solid rgba(0, 210, 255, 0.2); }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: #00d2ff; margin-top: 0; }
-        .card p { color: #cbd5e1; font-size: 14px; line-height: 1.5; }
-        
-        .visit-btn { display: inline-block; background-color: #00d2ff; color: #0f172a; text-decoration: none; padding: 10px 15px; border-radius: 8px; margin-top: 15px; font-weight: bold; text-align: center; transition: 0.3s; }
+        .visit-btn { display: block; background-color: #00d2ff; color: #0f172a; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; transition: 0.3s; }
         .visit-btn:hover { background-color: #00b8e6; }
     </style>
 </head>
@@ -103,47 +103,46 @@
     <div class="site-cover"></div>
 
     <div class="hero">
-        <h1>مرحباً بك في World of AI</h1>
-        <p>اكتشف أحدث الأدوات والخدمات في عالم الذكاء الاصطناعي</p>
+        <h1>The Future of Artificial Intelligence</h1>
+        <p>Discover how AI is changing the world around us and learn about its most prominent tools</p>
     </div>
 
     <div class="slider-container">
         <div class="slides-wrapper">
             <div class="slide">
-                <img src="./hero-slide.png" alt="سلايد 1">
-                <div class="slide-text">نص تجريبي للشريحة الأولى</div>
+                <img src="./hero-slide.png" alt="AI Slide 1">
             </div>
             <div class="slide">
-                <img src="./hero-slide.png" alt="سلايد 2">
-                <div class="slide-text">نص تجريبي للشريحة الثانية</div>
-            </div>
-            <div class="slide">
-                <img src="./hero-slide.png" alt="سلايد 3">
-                <div class="slide-text">نص تجريبي للشريحة الثالثة</div>
+                <img src="./hero-slide.png" alt="AI Slide 2">
             </div>
         </div>
     </div>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="ابحث هنا...">
+        <input type="text" id="searchInput" placeholder="Search here...">
         <div class="filter-buttons">
-            <button class="filter-btn active">الكل</button>
-            <button class="filter-btn">تصنيف 1</button>
-            <button class="filter-btn">تصنيف 2</button>
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Coding</button>
+            <button class="filter-btn">Design</button>
+            <button class="filter-btn">Chat</button>
         </div>
     </div>
 
     <div class="cards-container">
         <div class="card">
-            <h3>عنوان الأداة أو الخدمة</h3>
-            <p>هنا يمكنك كتابة وصف مختصر للخدمة التي تقدمها.</p>
-            <a href="#" class="visit-btn">زيارة الرابط</a>
+            <div>
+                <h3>GitHub Copilot</h3>
+                <p><strong>Important:</strong> The most powerful software assistant for developers, as it suggests writing full code and fixing bugs, increasing programmer productivity by more than 50%.</p>
+            </div>
+            <a href="#" class="visit-btn">Visit Copilot</a>
         </div>
         
         <div class="card">
-            <h3>خدمة أخرى</h3>
-            <p>وصف آخر يعرض محتواك بشكل أنيق ومرتب.</p>
-            <a href="#" class="visit-btn">زيارة الرابط</a>
+            <div>
+                <h3>Midjourney</h3>
+                <p><strong>Important:</strong> A leader in transforming descriptive words and text into professional, high-resolution artwork and images, shortening weeks of design in seconds.</p>
+            </div>
+            <a href="#" class="visit-btn">Visit Midjourney</a>
         </div>
     </div>
 
