@@ -7,7 +7,7 @@
     
     <style>
         /* ========================================= */
-        /* 1. الإعدادات الأساسية والخلفية الزرقاء */
+        /* 1. الإعدادات الأساسية للخلفية */
         /* ========================================= */
         body {
             background-color: #0f172a; 
@@ -18,66 +18,66 @@
         }
 
         /* ========================================= */
-        /* 2. تصميم الغلاف العلوي */
+        /* 2. تصميم الغلاف العلوي (تم تكبير الارتفاع) */
         /* ========================================= */
         .site-cover {
-            background-image: url('./design.png');
+            background-image: url('design.png'); /* تأكد أن اسم الصورة design.png بالظبط */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             width: 100%;
-            height: 250px;
+            height: 400px; /* تم تكبير الغلاف ليظهر بشكل أفضل */
+            border-bottom: 2px solid #00d2ff;
         }
 
         /* ========================================= */
-        /* 3. تصميم الترحيب (النصوص) */
+        /* 3. تصميم الترحيب */
         /* ========================================= */
-        .hero { padding: 40px 20px 20px; text-align: center; }
-        .hero h1 { color: #00d2ff; font-size: 32px; margin-bottom: 10px; }
-        .hero p { color: #94a3b8; font-size: 16px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        .hero { padding: 50px 20px 20px; text-align: center; }
+        .hero h1 { color: #00d2ff; font-size: 36px; margin-bottom: 15px; }
+        .hero p { color: #94a3b8; font-size: 18px; max-width: 800px; margin: 0 auto; line-height: 1.6; }
 
         /* ========================================= */
-        /* 4. تصميم الصور بشكل عمودي (تحت بعضها) */
+        /* 4. تصميم الصور الكبيرة جداً (السلايدات العمودية) */
         /* ========================================= */
         .vertical-images {
-            width: 90%;
-            max-width: 800px;
-            margin: 30px auto;
+            width: 95%; /* تأخذ مساحة كبيرة جداً من الشاشة */
+            max-width: 1200px; /* الحد الأقصى للعرض */
+            margin: 40px auto;
             display: flex;
-            flex-direction: column; /* هذا السطر يجعل الصور تحت بعضها */
-            gap: 30px; /* المسافة بين كل صورة وأخرى */
+            flex-direction: column;
+            gap: 50px; /* مسافة كبيرة بين كل صورة وأخرى */
         }
         .vertical-images img {
             width: 100%;
-            border-radius: 15px;
-            border: 2px solid #00d2ff;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
-            object-fit: contain;
-            background-color: #0f172a;
+            height: auto; /* للحفاظ على دقة الصورة بدون تشوه */
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.3);
         }
 
         /* ========================================= */
         /* 5. شريط البحث والفلاتر */
         /* ========================================= */
-        .search-container { text-align: center; margin: 40px auto 20px; max-width: 600px; padding: 0 20px; }
-        #searchInput { width: 100%; padding: 12px 20px; border: 2px solid #1e293b; border-radius: 25px; background-color: #1e293b; color: #fff; outline: none; transition: 0.3s; box-sizing: border-box; font-size: 16px; }
-        #searchInput:focus { border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
+        .search-container { text-align: center; margin: 50px auto 30px; max-width: 700px; padding: 0 20px; }
+        #searchInput { width: 100%; padding: 15px 25px; border: 2px solid #1e293b; border-radius: 30px; background-color: #1e293b; color: #fff; outline: none; transition: 0.3s; font-size: 18px; }
+        #searchInput:focus { border-color: #00d2ff; box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); }
         
-        .filter-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .filter-btn { background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-size: 14px; }
+        .filter-buttons { margin-top: 25px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 10px 25px; border-radius: 25px; cursor: pointer; transition: 0.3s; font-size: 16px; }
         .filter-btn:hover, .filter-btn.active { background: #00d2ff; color: #0f172a; font-weight: bold; }
 
         /* ========================================= */
         /* 6. تصميم البطاقات */
         /* ========================================= */
-        .cards-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; padding: 40px 20px; }
-        .card { background-color: #1e293b; border-radius: 15px; padding: 25px; width: 300px; text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s ease; border: 1px solid rgba(0, 210, 255, 0.1); display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { transform: translateY(-5px); border-color: rgba(0, 210, 255, 0.5); }
-        .card h3 { color: #00d2ff; margin-top: 0; font-size: 22px; margin-bottom: 15px; }
-        .card p { color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .cards-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 20px 20px 60px; max-width: 1400px; margin: 0 auto;}
+        .card { background-color: #1e293b; border-radius: 15px; padding: 30px; width: 320px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease; border: 1px solid rgba(0, 210, 255, 0.1); display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-8px); border-color: rgba(0, 210, 255, 0.5); }
+        .card h3 { color: #00d2ff; margin-top: 0; font-size: 24px; margin-bottom: 15px; }
+        .card p { color: #cbd5e1; font-size: 15px; line-height: 1.7; margin-bottom: 25px; }
         .card p strong { color: #fff; }
         
-        .visit-btn { display: block; background-color: #00d2ff; color: #0f172a; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; transition: 0.3s; }
+        .visit-btn { display: block; background-color: #00d2ff; color: #0f172a; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; transition: 0.3s; font-size: 16px;}
         .visit-btn:hover { background-color: #00b8e6; }
     </style>
 </head>
@@ -91,13 +91,13 @@
     </div>
 
     <div class="vertical-images">
-        <img src="./hero-slide.png" alt="AI Image 1">
+        <img src="hero-slide.png" alt="AI Image 1">
         
-        <img src="./hero-slide.png" alt="AI Image 2">
+        <img src="hero-slide.png" alt="AI Image 2">
     </div>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search here...">
+        <input type="text" id="searchInput" placeholder="Search tools...">
         <div class="filter-buttons">
             <button class="filter-btn active">All</button>
             <button class="filter-btn">Coding</button>
